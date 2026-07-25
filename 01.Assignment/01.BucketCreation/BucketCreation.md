@@ -8,5 +8,6 @@ Steps:
 6. create on create bucket
 <img width="1902" height="862" alt="image" src="https://github.com/user-attachments/assets/06237fb1-e806-4686-9bdd-ad13d65730e4" />
 <img width="1897" height="856" alt="image" src="https://github.com/user-attachments/assets/34649b85-d786-4252-bcc4-009a0eaecaf5" />
+<img width="1915" height="826" alt="image" src="https://github.com/user-attachments/assets/58c8bdcf-4757-43ce-bc93-0a84215d4087" />
 
 

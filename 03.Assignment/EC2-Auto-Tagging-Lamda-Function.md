@@ -50,36 +50,8 @@ The Lambda function requires an Execution Role with the following inline policy 
 }
 ```
 <img width="1902" height="867" alt="image" src="https://github.com/user-attachments/assets/86d46c2f-56f5-49ed-988c-29caf7ce5302" />
-2. Create a new Lamda Function and deploy the below code.
+2. Create a new Lamda Function with meaning fullname and deploy the code from Lamda.py file
 ```
-import boto3
-import logging
-import datetime
-
-client = boto3.client('ec2')
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
-
-def lambda_handler(event, context):
-    try:
-        instanceId = event['detail']['instance-id']
-        logger.info(f"Processing RunInstances event for instance: {instanceId}")
-
-        currentTimestamp = datetime.datetime.now().strftime("%Y-%m-%d")
-
-        tags=[
-        {'Key': 'LaunchDate','Value': currentTimestamp,},
-        {'Key': 'Environment','Value': 'production',},]
-        response = client.create_tags(Resources=[instanceId,],Tags=tags,)
-        logger.info(f"Successfully tagged instance {instanceId} with LaunchDate and Environment tags.")
-        return {
-            'statusCode': 200,
-            'body': f"Successfully tagged instance {instanceId} with LaunchDate and Environment tags."
-        }
-        
-    except Exception as e:
-        logger.error(f"Error processing RunInstances event: {str(e)}")
-        raise e
- ```
+```
 
   3. Assign the IAM policy to the Lamda Function which we created in the step 1

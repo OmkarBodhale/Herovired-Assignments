@@ -17,6 +17,7 @@ A serverless automation utility built with AWS Lambda and Amazon EventBridge to 
 ## Setup Instructions
 
 1. **IAM Role Configuration:** Create an IAM Role for Lambda with `AWSLambdaBasicExecutionRole` and an inline policy granting `ec2:CreateSnapshot`, `ec2:DescribeSnapshots`, `ec2:DeleteSnapshot`, and `ec2:CreateTags`.
+Note : You need to replace the Region, Account Id and Volume Id in the policy and then apply "arn:aws:ec2:REGION:ACCOUNT_ID:volume/YOUR_VOLUME_ID"
 2. **Create a EBS Volume** Configured the EBS Volume details and Click on Create Volume.
 <img width="1902" height="856" alt="image" src="https://github.com/user-attachments/assets/bf6e8b21-62ba-45d2-af19-866ca2aea15f" />
 <img width="1905" height="856" alt="image" src="https://github.com/user-attachments/assets/74309c28-441e-4669-9ba6-79e5ed06527c" />

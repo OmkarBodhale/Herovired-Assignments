@@ -31,12 +31,13 @@ Note : You need to replace the Region, Account Id and Volume Id in the policy an
 <img width="1907" height="862" alt="image" src="https://github.com/user-attachments/assets/db595474-b554-4f32-91b7-8ee3c17d6172" />
 <img width="1897" height="862" alt="image" src="https://github.com/user-attachments/assets/b625c00e-d2a4-489b-b8d9-dbfbda81dc46" />
 
-4. **Deploy Code:** Paste the provided `boto3` script into the function source and deploy.
+4. **Deploy Code:** Copy the Boto3 Script from Lamda_Function.py file and deploy.
 <img width="1900" height="857" alt="image" src="https://github.com/user-attachments/assets/b99fc0fa-b94f-474b-a4b5-32ee9c8d91b1" />
 <img width="1917" height="867" alt="image" src="https://github.com/user-attachments/assets/1d65b7e1-9336-407f-adf0-549f95e7497d" />
+Deleting older Snapshot ---Here I have configured the retention days as 0.5 to test
+<img width="1891" height="852" alt="image" src="https://github.com/user-attachments/assets/a0649507-b3a1-4ee2-8635-68c96acf3a6f" />
 
 6. **EventBridge Trigger:** Create an EventBridge Schedule rule using the cron expression `cron(0 0 ? * SUN *)` and point the target to your Lambda function.
-7. **Testing:** Manually trigger the Lambda function via the console. Verify in the EC2 Snapshots dashboard that a new snapshot is created with the tag `CreatedBy=Lambda-Backup`.
 
 ## Discussion: AWS Data Lifecycle Manager (DLM) vs. AWS Lambda
 

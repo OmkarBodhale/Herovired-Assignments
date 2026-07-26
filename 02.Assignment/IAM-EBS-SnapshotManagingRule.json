@@ -1,0 +1,42 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowDescribeSnapshots",
+            "Effect": "Allow",
+            "Action": "ec2:DescribeSnapshots",
+            "Resource": "*"
+        },
+        {
+            "Sid": "AllowCreateSnapshotForSpecificVolume",
+            "Effect": "Allow",
+            "Action": "ec2:CreateSnapshot",
+            "Resource": [
+                "arn:aws:ec2:us-east-1:071146695294:volume/vol-042e0cb5fd47bb508",
+                "arn:aws:ec2:us-east-1:071146695294:snapshot/*"
+            ]
+        },
+        {
+            "Sid": "AllowTaggingOnCreation",
+            "Effect": "Allow",
+            "Action": "ec2:CreateTags",
+            "Resource": "arn:aws:ec2:us-east-1:071146695294:snapshot/*",
+            "Condition": {
+                "StringEquals": {
+                    "ec2:CreateAction": "CreateSnapshot"
+                }
+            }
+        },
+        {
+            "Sid": "AllowDeletingOnlyLambdaSnapshots",
+            "Effect": "Allow",
+            "Action": "ec2:DeleteSnapshot",
+            "Resource": "arn:aws:ec2:us-east-1:071146695294:snapshot/*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceTag/CreatedBy": "Lambda-Backup"
+                }
+            }
+        }
+    ]
+}

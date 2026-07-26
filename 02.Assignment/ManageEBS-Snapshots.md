@@ -38,6 +38,10 @@ Deleting older Snapshot ---Here I have configured the retention days as 0.5 to t
 <img width="1891" height="852" alt="image" src="https://github.com/user-attachments/assets/a0649507-b3a1-4ee2-8635-68c96acf3a6f" />
 
 6. **EventBridge Trigger:** Create an EventBridge Schedule rule using the cron expression `cron(0 0 ? * SUN *)` and point the target to your Lambda function.
+<img width="1897" height="870" alt="image" src="https://github.com/user-attachments/assets/c0ea6229-30b7-4d96-8fa2-8170d6715b1a" />
+<img width="1906" height="866" alt="image" src="https://github.com/user-attachments/assets/49f95488-b728-401b-9dcf-9e5d8ff2d787" />
+
+   **Note :** Set Schedule pattern as `cron(0 0 ? * SUN *)` this will trigger this automaically every sunday.
 
 ## Discussion: AWS Data Lifecycle Manager (DLM) vs. AWS Lambda
 

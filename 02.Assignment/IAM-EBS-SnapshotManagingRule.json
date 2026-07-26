@@ -12,15 +12,15 @@
             "Effect": "Allow",
             "Action": "ec2:CreateSnapshot",
             "Resource": [
-                "arn:aws:ec2:us-east-1:071146695294:volume/vol-042e0cb5fd47bb508",
-                "arn:aws:ec2:us-east-1:071146695294:snapshot/*"
+                "arn:aws:ec2:REGION:ACCOUNT_ID:volume/YOUR_VOLUME_ID",
+                "arn:aws:ec2:REGION:ACCOUNT_ID:snapshot/*"
             ]
         },
         {
             "Sid": "AllowTaggingOnCreation",
             "Effect": "Allow",
             "Action": "ec2:CreateTags",
-            "Resource": "arn:aws:ec2:us-east-1:071146695294:snapshot/*",
+            "Resource": "arn:aws:ec2:REGION:ACCOUNT_ID:snapshot/*",
             "Condition": {
                 "StringEquals": {
                     "ec2:CreateAction": "CreateSnapshot"
@@ -31,7 +31,7 @@
             "Sid": "AllowDeletingOnlyLambdaSnapshots",
             "Effect": "Allow",
             "Action": "ec2:DeleteSnapshot",
-            "Resource": "arn:aws:ec2:us-east-1:071146695294:snapshot/*",
+            "Resource": "arn:aws:ec2:REGION:ACCOUNT_ID:snapshot/*",
             "Condition": {
                 "StringEquals": {
                     "aws:ResourceTag/CreatedBy": "Lambda-Backup"

@@ -23,12 +23,19 @@ Build an automated alert system that triggers when your AWS Month-to-Date (MTD) 
 
 1. Navigate to **Amazon SNS** in the AWS Console.
 2. Create a new **Standard Topic** (e.g., `aws-cost-alerts`).
+<img width="1892" height="862" alt="image" src="https://github.com/user-attachments/assets/03ec64c2-6831-431d-973c-3a11cf852cbf" />
+<img width="1902" height="867" alt="image" src="https://github.com/user-attachments/assets/d9cd8cec-70a5-411b-b648-4adc1f10dc9f" />
+
 3. Create a **Subscription** for the topic:
 * **Protocol:** Email
 * **Endpoint:** Your email address
-
+<img width="1897" height="866" alt="image" src="https://github.com/user-attachments/assets/4db77118-8cce-40e5-833d-42507c909975" />
+<img width="1902" height="856" alt="image" src="https://github.com/user-attachments/assets/8a8694b5-f9b8-4c66-b4c5-4653d3bd7762" />
 
 4. Check your inbox and **Confirm the subscription**.
+<img width="1581" height="762" alt="image" src="https://github.com/user-attachments/assets/579173c9-674f-4ddb-9247-b519cd1a96df" />
+<img width="1917" height="875" alt="image" src="https://github.com/user-attachments/assets/3ecfc52b-c56b-441e-9bea-a81e58481725" />
+<img width="1902" height="870" alt="image" src="https://github.com/user-attachments/assets/eb2d2a5d-316e-4cc0-99a5-1b7738431339" />
 
 ### Step 2: IAM Role Configuration
 
@@ -53,7 +60,9 @@ Create a new IAM Role for your Lambda function. Attach an inline policy granting
 
 ```
 
-*(Also attach the AWS managed `AWSLambdaBasicExecutionRole` so the function can write logs to CloudWatch).*
+<img width="1907" height="860" alt="image" src="https://github.com/user-attachments/assets/81d0f023-e16b-4b1a-b3d3-fca9dde0ef2a" />
+<img width="1902" height="867" alt="image" src="https://github.com/user-attachments/assets/a7770e9d-95e6-43bf-b49e-ace797aeddf3" />
+<img width="1902" height="862" alt="image" src="https://github.com/user-attachments/assets/b4fd5be0-a32a-40c1-b7fb-947c429a0840" />
 
 ### Step 3: Lambda Function (Boto3)
 
@@ -105,17 +114,25 @@ def lambda_handler(event, context):
     return {"statusCode": 200, "body": f"Processed cost: ${cost}"}
 
 ```
+<img width="1887" height="857" alt="image" src="https://github.com/user-attachments/assets/2c8710e9-ecdc-4309-9ed3-264d74a5ce8a" />
+<img width="1901" height="866" alt="image" src="https://github.com/user-attachments/assets/f9b4dbb4-b66d-442c-b003-2bd24f3e968b" />
+<img width="1900" height="867" alt="image" src="https://github.com/user-attachments/assets/3b9c09bf-eae0-461a-81ff-6eeb7c815108" />
+
 
 **Environment Variables Required:**
 
 * `THRESHOLD`: e.g., `50.0`
 * `SNS_TOPIC_ARN`: The ARN of your SNS topic from Step 1.
+<img width="1902" height="862" alt="image" src="https://github.com/user-attachments/assets/6e0d87e5-a4b1-4a67-8b87-2ec80f8bea15" />
 
 ### Step 4: EventBridge Scheduling
 
 1. Navigate to **Amazon EventBridge** > **Rules** > **Create rule**.
 2. Select **Schedule** and set it to run daily (e.g., `cron(0 12 * * ? *)` for 12:00 PM UTC).
+<img width="1900" height="865" alt="image" src="https://github.com/user-attachments/assets/637a14b8-0cb9-4bad-92ca-ba119d201ff1" />
+
 3. Set the target to your **Lambda function**.
+<img width="1902" height="861" alt="image" src="https://github.com/user-attachments/assets/d326c5bf-8d1e-472f-a416-18dc4eefec95" />
 
 ### Step 5: Testing
 
@@ -126,6 +143,7 @@ To ensure the pipeline works:
 3. Check CloudWatch logs to see the retrieved amount printed.
 4. Verify you received the email alert from SNS.
 5. Restore the `THRESHOLD` to your actual budget limit.
+<img width="1567" height="757" alt="image" src="https://github.com/user-attachments/assets/6220eb8f-d781-45b2-8b28-783b36a95b44" />
 
 ---
 
